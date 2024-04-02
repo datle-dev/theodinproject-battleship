@@ -1,25 +1,19 @@
-export default function Ship (shipLength) {
+export default function Ship (length) {
     let hitCount = 0;
-    // let shipLength = shipLength
-    let isSunkStatus = false;
 
     const hit = () => {
         hitCount++;
-    };
-
-    const getHits = () => {
         return hitCount;
     };
 
     const isSunk = () => {
-        if (hitCount == shipLength) {
+        if (hitCount == length) {
             return true;
         }
     };
-
+ 
     return {
         hit,
-        getHits,
         isSunk,
     };
 }

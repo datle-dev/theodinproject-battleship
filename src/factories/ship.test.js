@@ -7,13 +7,8 @@ describe('ship functions', () => {
         ship = Ship(3);
     });
 
-    it('can report the number of hits', () => {
-        expect(ship.getHits()).toBe(0);
-    });
-
     it('registers a hit', () => {
-        ship.hit();
-        expect(ship.getHits()).toBe(1);
+        expect(ship.hit()).toBe(1);
     });
 
     it('knows it has been sunk', () => {
