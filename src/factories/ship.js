@@ -11,10 +11,15 @@ export default function Ship (length) {
             return true;
         }
     };
+
+    const getLength = () => {
+        return length;
+    };
  
     return {
         hit,
         isSunk,
+        getLength,
     };
 }
 
