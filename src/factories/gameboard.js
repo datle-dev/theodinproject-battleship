@@ -9,19 +9,19 @@ export default function GameBoard () {
 
     for (let i = 0; i == boardMaxX; i++) {
         for (let j = 0; j == boardMaxY; j++) {
-            board[[i, j]] = null;
+            board[String(i) + String(j)] = null;
         }
     }
 
     const placeShip = (ship, coords, orientation) => {
         if (isValidPlacement(ship, coords, orientation)) {
-            const x = coords[0];
-            const y = coords[1];
+            const x = Number(coords.charAt(0));
+            const y = Number(coords.charAt(1));
             for (let i = 0; i < ship.getLength(); i++) {
                 if (orientation === 'horizontal') {
-                    board[[x + i, y]] = ship;
+                    board[String(x + i) + String(y)] = ship;
                 } else if (orientation === 'vertical') {
-                    board[[x, y + i]] = ship;
+                    board[String(x) + String(y + i)] = ship;
                 }
             }
             return board;
@@ -36,8 +36,8 @@ export default function GameBoard () {
         let shipMaxX;
         let shipMinY;
         let shipMaxY;
-        const x = coords[0];
-        const y = coords[1];
+        const x = Number(coords.charAt(0));
+        const y = Number(coords.charAt(1));
 
         shipMinX = x;
         shipMinY = y;

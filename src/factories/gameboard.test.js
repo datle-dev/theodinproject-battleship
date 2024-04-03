@@ -17,57 +17,57 @@ describe('gameboard functions', () => {
 
         for (let i = 0; i == boardMaxX; i++) {
             for (let j = 0; j == boardMaxY; j++) {
-                board[[i, j]] = null;
+                board[String(i) + String(j)] = null;
             }
         }
     });
 
     it('can place a ship horizontally', () => {
-        board[[3, 3]] = ship;
-        board[[4, 3]] = ship;
-        board[[5, 3]] = ship;
-        expect(gameboard.placeShip(ship, [3, 3], 'horizontal')).toEqual(board)
+        board['33'] = ship;
+        board['43'] = ship;
+        board['53'] = ship;
+        expect(gameboard.placeShip(ship, '33', 'horizontal')).toEqual(board)
     });
 
     it('can place a ship vertically', () => {
-        board[[3, 3]] = ship;
-        board[[3, 4]] = ship;
-        board[[3, 5]] = ship;
-        expect(gameboard.placeShip(ship, [3, 3], 'vertical')).toEqual(board)
+        board['33'] = ship;
+        board['34'] = ship;
+        board['35'] = ship;
+        expect(gameboard.placeShip(ship, '33', 'vertical')).toEqual(board)
     });
 
     it('throws error for invalid ship placement, horizontally in bottom right corner', () => {
         expect(() => {
-            gameboard.placeShip(ship, [9, 9], 'horizontal');
+            gameboard.placeShip(ship, '99', 'horizontal');
         }).toThrow(Error);
     });
 
     it('throws error for invalid ship placement, vertically in bottom right corner', () => {
         expect(() => {
-            gameboard.placeShip(ship, [9, 9], 'vertical');
+            gameboard.placeShip(ship, '99', 'vertical');
         }).toThrow(Error);
     });
 
     it('throws error for invalid ship placement, horizontally in top right corner', () => {
         expect(() => {
-            gameboard.placeShip(ship, [9, 2], 'horizontal');
+            gameboard.placeShip(ship, '92', 'horizontal');
         }).toThrow(Error);
     });
 
     it('throws error for invalid ship placement, vertically in bottom left corner', () => {
         expect(() => {
-            gameboard.placeShip(ship, [2, 9], 'vertical');
+            gameboard.placeShip(ship, '29', 'vertical');
         }).toThrow(Error);
     });
 
     it('registers a successful hit on a ship', () => {
-        gameboard.placeShip(ship, [3, 3], 'horizontal');
-        expect(gameboard.receiveAttack([3, 3])).toBeTruthy();
+        gameboard.placeShip(ship, '33', 'horizontal');
+        expect(gameboard.receiveAttack('33')).toBeTruthy();
     });
 
     it('registers a miss', () => {
-        gameboard.placeShip(ship, [3, 3], 'horizontal');
-        expect(gameboard.receiveAttack([2, 2])).toBeFalsy();
+        gameboard.placeShip(ship, '33', 'horizontal');
+        expect(gameboard.receiveAttack('22')).toBeFalsy();
     });
 
 });
@@ -90,12 +90,12 @@ describe('end conditions', () => {
 
         for (let i = 0; i == boardMaxX; i++) {
             for (let j = 0; j == boardMaxY; j++) {
-                board[[i, j]] = null;
+                board[String(i) + String(j)] = null;
             }
         }
 
-        gameboard.placeShip(ship1, [3, 3], 'horizontal')
-        gameboard.placeShip(ship2, [2, 2], 'vertical')
+        gameboard.placeShip(ship1, '33', 'horizontal')
+        gameboard.placeShip(ship2, '22', 'vertical')
 
     });
 
