@@ -9,6 +9,8 @@ export default function Ship (length) {
     const isSunk = () => {
         if (hitCount == length) {
             return true;
+        } else {
+            return false;
         }
     };
 
