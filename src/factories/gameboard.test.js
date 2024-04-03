@@ -60,6 +60,13 @@ describe('gameboard functions', () => {
         }).toThrow(Error);
     });
 
+    it ('throws error for already occupied spaces', () => {
+        gameboard.placeShip(ship, '33', 'horizontal')
+        expect(() => {
+            gameboard.placeShip(ship, '33', 'vertical');
+        }).toThrow(Error);
+    });
+
     it('registers a successful hit on a ship', () => {
         gameboard.placeShip(ship, '33', 'horizontal');
         expect(gameboard.receiveAttack('33')).toBeTruthy();
