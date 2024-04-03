@@ -72,3 +72,55 @@ describe('gameboard functions', () => {
 
 });
 
+describe('end conditions', () => {
+    const boardMinX = 0;
+    const boardMinY = 0;
+    const boardMaxX = 9;
+    const boardMaxY = 9;
+    let gameboard;
+    let ship1;
+    let ship2;
+    let board;
+
+    beforeEach(() => {
+        gameboard = GameBoard();
+        ship1 = Ship(3);
+        ship2 = Ship(5);
+        board = {};
+
+        for (let i = 0; i == boardMaxX; i++) {
+            for (let j = 0; j == boardMaxY; j++) {
+                board[[i, j]] = null;
+            }
+        }
+
+        gameboard.placeShip(ship1, [3, 3], 'horizontal')
+        gameboard.placeShip(ship2, [2, 2], 'vertical')
+
+    });
+
+    it('knows when all ships are sunk', () => {
+        ship1.hit();
+        ship1.hit();
+        ship1.hit();
+        ship2.hit();
+        ship2.hit();
+        ship2.hit();
+        ship2.hit();
+        ship2.hit();
+        expect(gameboard.isAllSunk()).toBeTruthy();
+    });
+
+    it('knows when all ships are not sunk yet', () => {
+        ship1.hit();
+        ship1.hit();
+        // ship1.hit();
+        ship2.hit();
+        ship2.hit();
+        ship2.hit();
+        // ship2.hit();
+        // ship2.hit();
+        expect(gameboard.isAllSunk()).toBeFalsy();
+    });
+
+})

@@ -73,8 +73,20 @@ export default function GameBoard () {
         }
     };
 
+    const isAllSunk = () => {
+        for (let key of Object.keys(board)) {
+            if (board[key] != null) {
+                if (!board[key].isSunk()) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
     return {
         placeShip,
         receiveAttack,
+        isAllSunk,
     }
 }
