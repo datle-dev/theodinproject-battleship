@@ -37,7 +37,6 @@ export default function Player () {
 
     const addHit = (coords) => {
         const index = moves.indexOf(coords);
-        console.log(index);
         moves.splice(index, 1);
         hits.push(coords);
         prevGuessWasHit = true;
