@@ -4,6 +4,7 @@ export default function GameBoard () {
     const boardMaxX = 9;
     const boardMaxY = 9;
 
+    let misses = [];
     let board = {};
 
     for (let i = 0; i == boardMaxX; i++) {
@@ -67,6 +68,7 @@ export default function GameBoard () {
             ship.hit();
             return true;
         } else {
+            misses.push(coords);
             return false;
         }
     };

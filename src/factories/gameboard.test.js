@@ -65,4 +65,10 @@ describe('gameboard functions', () => {
         expect(gameboard.receiveAttack([3, 3])).toBeTruthy();
     });
 
+    it('registers a miss', () => {
+        gameboard.placeShip(ship, [3, 3], 'horizontal');
+        expect(gameboard.receiveAttack([2, 2])).toBeFalsy();
+    });
+
 });
+
